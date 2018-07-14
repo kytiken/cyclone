@@ -3,6 +3,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import PackageList from './components/PackageList'
+import Console from './components/Console'
 
 const App = () => (
   <div>
@@ -14,6 +15,7 @@ const App = () => (
       </Toolbar>
     </AppBar>
     <PackageList checked={[]} />
+    <Console />
   </div>
 )
 
