@@ -6,6 +6,7 @@
   "dependencies": {
     "react": "^16.4.1",
     "react-dom": "^16.4.1",
+    "react-redux": "^5.0.7",
     "react-scripts": "1.1.4"
   },
   "scripts": {
@@ -16,6 +17,7 @@
     "electron": "electron ."
   },
   "devDependencies": {
-    "electron": "^2.0.5"
+    "electron": "^2.0.5",
+    "redux-devtools": "^3.4.1"
   }
 }
