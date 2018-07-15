@@ -16,7 +16,7 @@ class RoleList extends React.Component {
   }
 
   componentDidMount () {
-    this.props.actions.initializeRolesCreator()
+    this.props.actions.initializeRolesCreator(this.props.dispatch)
   }
 
   handleToggle (value) {

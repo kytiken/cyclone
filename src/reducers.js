@@ -1,4 +1,5 @@
 import { handleActions } from 'redux-actions'
+import actions from './actions/roles'
 
 const defaultState = {
   roles: [
@@ -10,7 +11,10 @@ const defaultState = {
 
 const reducer = handleActions(
   {
-    'INITIALIZE_ROLES': (state, { payload: roles }) => ({ ...state, roles })
+    [actions.addRole]: (state, { payload: role }) => {
+      const roles = state.roles.concat(role)
+      return { ...state, roles }
+    }
   },
   defaultState
 )
