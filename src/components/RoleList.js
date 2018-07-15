@@ -7,7 +7,7 @@ import Checkbox from '@material-ui/core/Checkbox'
 import IconButton from '@material-ui/core/IconButton'
 import CommentIcon from '@material-ui/icons/Comment'
 
-class PackageList extends React.Component {
+class RoleList extends React.Component {
   constructor () {
     super()
     this.state = {
@@ -16,7 +16,7 @@ class PackageList extends React.Component {
   }
 
   componentDidMount () {
-    this.setState({checked: this.props.checked})
+    this.props.actions.initializeRolesCreator()
   }
 
   handleToggle (value) {
@@ -41,20 +41,20 @@ class PackageList extends React.Component {
     return (
       <div>
         <List>
-          {[0, 1, 2, 3].map(value => (
+          {this.props.roles.map(role => (
             <ListItem
-              key={value}
+              key={role.name}
               role={undefined}
               dense
               button
-              onClick={this.handleToggle(value)}
+              onClick={this.handleToggle(role.name)}
             >
               <Checkbox
-                checked={this.state.checked.indexOf(value) !== -1}
+                checked={this.state.checked.indexOf(role.name) !== -1}
                 tabIndex={-1}
                 disableRipple
               />
-              <ListItemText primary={`Line item ${value + 1}`} />
+              <ListItemText primary={`${role.name}`} />
               <ListItemSecondaryAction>
                 <IconButton aria-label='Comments'>
                   <CommentIcon />
@@ -68,4 +68,4 @@ class PackageList extends React.Component {
   }
 }
 
-export default PackageList
+export default RoleList

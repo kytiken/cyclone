@@ -2,7 +2,7 @@ import React from 'react'
 import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
-import PackageList from './components/PackageList'
+import RoleListContainer from './containers/RoleListContainer'
 import Console from './components/Console'
 
 const App = () => (
@@ -14,7 +14,7 @@ const App = () => (
         </Typography>
       </Toolbar>
     </AppBar>
-    <PackageList checked={[]} />
+    <RoleListContainer />
     <Console />
   </div>
 )
