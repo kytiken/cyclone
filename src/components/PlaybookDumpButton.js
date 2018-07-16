@@ -18,8 +18,10 @@ class PlaybookDumpButton extends React.Component {
       'sortKeys': true // sort object keys
     })
     console.log(yamlString)
+    const filePath = `${process.resourcesPath}/playbook.yml`
+    console.log(filePath)
     try {
-      fs.writeFileSync('/Users/kytiken/playbook.yml', yamlString, 'utf-8')
+      fs.writeFileSync(filePath, yamlString, 'utf-8')
     } catch (e) {
       console.log('Failed to save the file !')
     }
@@ -27,7 +29,7 @@ class PlaybookDumpButton extends React.Component {
 
   render () {
     return (<Button color='primary' onClick={this.dump.bind(this)}>
-      Primary
+      dump!!
     </Button>)
   }
 }
