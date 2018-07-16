@@ -7,9 +7,8 @@ import Checkbox from '@material-ui/core/Checkbox'
 import IconButton from '@material-ui/core/IconButton'
 import CommentIcon from '@material-ui/icons/Comment'
 import os from 'os'
-import actions from '../actions/roles'
 
-class RoleList extends React.Component {
+class PlaybookList extends React.Component {
   constructor () {
     super()
     this.state = {
@@ -34,11 +33,12 @@ class RoleList extends React.Component {
   }
 
   componentDidMount () {
-    const initializeRolesCreator = (dispatch) => {
+    const initializePlaybooksCreator = (dispatch) => {
       this.ptyProcess.write('ls / \r')
     }
 
-    initializeRolesCreator(this.props.dispatch)
+    initializePlaybooksCreator(this.props.dispatch)
+
   }
 
   handleToggle (value) {
@@ -63,20 +63,20 @@ class RoleList extends React.Component {
     return (
       <div>
         <List>
-          {this.props.roles.map(role => (
+          {this.props.playbooks.map(playbook => (
             <ListItem
-              key={role.name}
-              role={undefined}
+              key={playbook.name}
+              playbook={undefined}
               dense
               button
-              onClick={this.handleToggle(role.name)}
+              onClick={this.handleToggle(playbook.name)}
             >
               <Checkbox
-                checked={this.state.checked.indexOf(role.name) !== -1}
+                checked={this.state.checked.indexOf(playbook.name) !== -1}
                 tabIndex={-1}
                 disableRipple
               />
-              <ListItemText primary={`${role.name}`} />
+              <ListItemText primary={`${playbook.name}`} />
               <ListItemSecondaryAction>
                 <IconButton aria-label='Comments'>
                   <CommentIcon />
@@ -90,4 +90,4 @@ class RoleList extends React.Component {
   }
 }
 
-export default RoleList
+export default PlaybookList

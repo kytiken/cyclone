@@ -1,8 +1,8 @@
 import { handleActions } from 'redux-actions'
-import actions from './actions/roles'
+import actions from './actions/playbooks'
 
 const defaultState = {
-  roles: [
+  playbooks: [
     { name: 'rbenv' },
     { name: 'pyenv' },
     { name: 'git' }
@@ -11,9 +11,9 @@ const defaultState = {
 
 const reducer = handleActions(
   {
-    [actions.addRole]: (state, { payload: role }) => {
-      const roles = state.roles.concat(role)
-      return { ...state, roles }
+    [actions.addPlaybook]: (state, { payload: playbook }) => {
+      const playbooks = state.playbooks.concat(playbook)
+      return { ...state, playbooks }
     }
   },
   defaultState
