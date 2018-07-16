@@ -60,6 +60,7 @@
   },
   "devDependencies": {
     "electron": "^2.0.5",
+    "electron-redux-devtools": "^0.3.4",
     "redux-devtools": "^3.4.1"
   },
   "jest": {
