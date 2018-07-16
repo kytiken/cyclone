@@ -2,11 +2,7 @@ import { handleActions } from 'redux-actions'
 import actions from './actions/playbooks'
 
 const defaultState = {
-  playbooks: [
-    { name: 'rbenv' },
-    { name: 'pyenv' },
-    { name: 'git' }
-  ]
+  playbooks: []
 }
 
 const reducer = handleActions(
