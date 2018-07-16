@@ -7,23 +7,26 @@ class PlaybookDumpButton extends React.Component {
   dump () {
     const tasks = this.props.playbooks
     const playbook = [{
-      connection: "local",
-      hosts: "localhost",
+      connection: 'local',
+      hosts: 'localhost',
       tasks
     }]
-    var yamlString = yaml.safeDump (playbook, {
+    var yamlString = yaml.safeDump(playbook, {
       'styles': {
         '!!null': 'canonical' // dump null as ~
       },
-      'sortKeys': true        // sort object keys
+      'sortKeys': true // sort object keys
     })
     console.log(yamlString)
-    try { fs.writeFileSync('/Users/kytiken/playbook.yml', yamlString, 'utf-8'); }
-    catch(e) { alert('Failed to save the file !'); }
+    try {
+      fs.writeFileSync('/Users/kytiken/playbook.yml', yamlString, 'utf-8')
+    } catch (e) {
+      console.log('Failed to save the file !')
+    }
   }
 
   render () {
-    return (<Button color="primary" onClick={this.dump.bind(this)}>
+    return (<Button color='primary' onClick={this.dump.bind(this)}>
       Primary
     </Button>)
   }
