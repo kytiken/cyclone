@@ -51,7 +51,7 @@ const extractTextPluginOptions = shouldUseRelativeAssetPaths
 // The development configuration is different and lives in a separate file.
 module.exports = {
   target: 'node',
-  externals: [(ctx, req, done) => (/^node-pty$/.test(req) ? done(null, `commonjs ${req}`) : done())],
+  externals: [(ctx, req, done) => (/(^node-pty$|^pouchdb$)/.test(req) ? done(null, `commonjs ${req}`) : done())],
   // Don't attempt to continue if there are any errors.
   bail: true,
   // We generate sourcemaps in production. This is slow but gives good results.

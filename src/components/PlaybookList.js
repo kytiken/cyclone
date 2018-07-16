@@ -38,7 +38,21 @@ class PlaybookList extends React.Component {
     }
 
     initializePlaybooksCreator(this.props.dispatch)
-
+    var PouchDB = require('pouchdb')
+    var db = new PouchDB('cyclone')
+    // db.put({
+    //   '_id': 'playbooks',
+    //   'records': [
+    //     {
+    //       'name': 'git',
+    //       'type': 'homebrew',
+    //       'task': {}
+    //     }
+    //   ]
+    // })
+    db.get('playbooks').then(function (doc) {
+      console.log(doc.records)
+    })
   }
 
   handleToggle (value) {

@@ -27,7 +27,7 @@ const env = getClientEnvironment(publicUrl)
 // The production configuration is different and lives in a separate file.
 module.exports = {
   target: 'node',
-  externals: [(ctx, req, done) => (/^node-pty$/.test(req) ? done(null, `commonjs ${req}`) : done())],
+  externals: [(ctx, req, done) => (/(^node-pty$|^pouchdb$)/.test(req) ? done(null, `commonjs ${req}`) : done())],
   // You may want 'eval' instead if you prefer to see the compiled output in DevTools.
   // See the discussion in https://github.com/facebookincubator/create-react-app/issues/343.
   devtool: 'cheap-module-source-map',
