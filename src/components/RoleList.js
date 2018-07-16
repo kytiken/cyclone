@@ -6,6 +6,8 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Checkbox from '@material-ui/core/Checkbox'
 import IconButton from '@material-ui/core/IconButton'
 import CommentIcon from '@material-ui/icons/Comment'
+import os from 'os'
+import actions from '../actions/roles'
 
 class RoleList extends React.Component {
   constructor () {
@@ -13,10 +15,30 @@ class RoleList extends React.Component {
     this.state = {
       checked: []
     }
+    this.ptyProcess = this.createPtyProcess()
+    this.ptyProcess.on('data', (data) => {
+      console.log(data)
+    })
+  }
+
+  createPtyProcess () {
+    const shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash'
+    const pty = require('node-pty')
+    return pty.spawn(shell, [], {
+      name: 'xterm-color',
+      cols: 40,
+      rows: 30,
+      cwd: process.env.HOME,
+      env: process.env
+    })
   }
 
   componentDidMount () {
-    this.props.actions.initializeRolesCreator(this.props.dispatch)
+    const initializeRolesCreator = (dispatch) => {
+      this.ptyProcess.write('ls / \r')
+    }
+
+    initializeRolesCreator(this.props.dispatch)
   }
 
   handleToggle (value) {
