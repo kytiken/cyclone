@@ -5,7 +5,12 @@ var fs = require('fs')
 
 class PlaybookDumpButton extends React.Component {
   dump () {
-    const tasks = this.props.playbooks
+    const tasks = []
+    this.props.playbooks.forEach((playbook) => {
+      playbook.tasks.forEach((task) => {
+        tasks.push(task)
+      })
+    })
     const playbook = [{
       connection: 'local',
       hosts: 'localhost',
