@@ -33,26 +33,8 @@ class PlaybookList extends React.Component {
   }
 
   componentDidMount () {
-    const initializePlaybooksCreator = (dispatch) => {
-      this.ptyProcess.write('ls / \r')
-    }
-
-    initializePlaybooksCreator(this.props.dispatch)
-    var PouchDB = require('pouchdb')
-    var db = new PouchDB('cyclone')
-    // db.put({
-    //   '_id': 'playbooks',
-    //   'records': [
-    //     {
-    //       'name': 'git',
-    //       'type': 'homebrew',
-    //       'task': {}
-    //     }
-    //   ]
-    // })
-    db.get('playbooks').then(function (doc) {
-      console.log(doc.records)
-    })
+    // this.ptyProcess.write('ls / \r')
+    this.props.initializePlaybooks()
   }
 
   handleToggle (value) {

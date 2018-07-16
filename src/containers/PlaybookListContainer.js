@@ -1,9 +1,29 @@
-import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import initializePlaybooksCreator from '../actionCreators/initializePlaybooksCreator'
+import actions from '../actions/playbooks'
 import PlaybookList from '../components/PlaybookList'
 
-const actions = { initializePlaybooksCreator }
+const initializePlaybooks = (dispatch) => {
+  return () => {
+    var PouchDB = require('pouchdb')
+    var db = new PouchDB('db')
+    // db.put({
+    //   '_id': 'playbooks',
+    //   'records': [
+    //     {
+    //       'name': 'git',
+    //       'type': 'homebrew',
+    //       'task': {}
+    //     }
+    //   ]
+    // })
+    db.get('playbooks').then((doc) => {
+      doc.records.forEach((playbook) => {
+        dispatch(actions.addPlaybook(playbook))
+      })
+    })
+  }
+}
+
 const mapStateToProps = (state) => {
   return {
     playbooks: state.playbooks
@@ -11,7 +31,7 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return { actions: bindActionCreators(actions, dispatch) }
+  return { initializePlaybooks: initializePlaybooks(dispatch) }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaybookList)
