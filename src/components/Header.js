@@ -5,7 +5,7 @@ import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import IconButton from '@material-ui/core/IconButton'
 import MenuIcon from '@material-ui/icons/Menu'
-import InstallButtonContainer from '../containers/InstallButtonContainer'
+import InstallDialog from '../components/InstallDialog'
 
 const styles = {
   root: {
@@ -32,7 +32,7 @@ function Header (props) {
           <Typography variant='title' color='inherit' className={classes.flex}>
             Cyclone
           </Typography>
-          <InstallButtonContainer />
+          <InstallDialog />
         </Toolbar>
       </AppBar>
     </div>
