@@ -26,7 +26,7 @@ const env = getClientEnvironment(publicUrl)
 // It is focused on developer experience and fast rebuilds.
 // The production configuration is different and lives in a separate file.
 module.exports = {
-  target: 'node',
+  target: 'electron',
   externals: [(ctx, req, done) => (/(^node-pty$|^pouchdb$)/.test(req) ? done(null, `commonjs ${req}`) : done())],
   // You may want 'eval' instead if you prefer to see the compiled output in DevTools.
   // See the discussion in https://github.com/facebookincubator/create-react-app/issues/343.
