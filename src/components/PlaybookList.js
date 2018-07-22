@@ -25,11 +25,6 @@ class PlaybookList extends React.Component {
     const shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash'
     const pty = require('node-pty')
     return pty.spawn(shell, [], {
-      name: 'xterm-color',
-      cols: 40,
-      rows: 30,
-      cwd: process.env.HOME,
-      env: process.env
     })
   }
 
@@ -59,7 +54,7 @@ class PlaybookList extends React.Component {
   render () {
     return (
       <div>
-        <PlaybookDumpButton playbooks={this.props.playbooks} />
+        <PlaybookDumpButton playbooks={this.props.playbooks} password={this.props.password} ptyProcess={this.ptyProcess} />
         <List>
           {this.props.playbooks.map(playbook => (
             <ListItem

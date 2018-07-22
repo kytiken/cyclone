@@ -30,12 +30,20 @@ class PlaybookDumpButton extends React.Component {
     } catch (e) {
       console.log('Failed to save the file !')
     }
+    this.props.ptyProcess.write(`ansible-playbook -K ${filePath}\r`)
+    window.setTimeout(() => {
+      this.props.ptyProcess.write(`${this.props.password}\r`)
+    }, 3000)
   }
 
   render () {
-    return (<Button color='primary' onClick={this.dump.bind(this)}>
-      dump!!
-    </Button>)
+    return (
+      <div>
+        <Button color='primary' onClick={this.dump.bind(this)}>
+          ansible execute!!
+        </Button>
+      </div>
+    )
   }
 }
 
