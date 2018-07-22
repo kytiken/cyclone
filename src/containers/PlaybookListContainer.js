@@ -1,4 +1,5 @@
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import actions from '../actions/playbooks'
 import PlaybookList from '../components/PlaybookList'
 
@@ -9,6 +10,7 @@ const initializePlaybooks = (dispatch) => {
 
     var playbookRecords = [
       {
+        'id': 1,
         'name': 'essential brew package',
         'tasks': [{
           name: 'Install homebrew packages',
@@ -36,6 +38,7 @@ const initializePlaybooks = (dispatch) => {
         }]
       },
       {
+        'id': 2,
         'name': 'cask',
         'tasks': [{
           'name': 'Install Homebrew cask packages',
@@ -83,12 +86,16 @@ const initializePlaybooks = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     playbooks: state.playbooks,
+    selectedPlaybooks: state.selectedPlaybooks,
     password: state.password
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return { initializePlaybooks: initializePlaybooks(dispatch) }
+  return {
+    initializePlaybooks: initializePlaybooks(dispatch),
+    ...bindActionCreators(actions, dispatch)
+  }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(PlaybookList)
