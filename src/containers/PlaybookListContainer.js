@@ -182,7 +182,6 @@ const initializePlaybooks = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     playbooks: state.playbooks,
-    selectedPlaybooks: state.selectedPlaybooks,
     password: state.password
   }
 }
