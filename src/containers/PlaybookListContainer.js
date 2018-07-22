@@ -19,26 +19,122 @@ const initializePlaybooks = (dispatch) => {
             'git',
             'openssl',
             'wget',
-            'curl',
-            'fish',
-            'graphviz',
-            'tig',
-            'tmux',
-            'elixir',
-            'haskell-stack',
-            'neovim/neovim/neovim',
-            'awscli',
-            'rmtrash',
-            'exa',
-            'the_silver_searcher',
-            'rbenv',
-            'peco',
-            'dry'
+            'curl'
           ]
         }]
       },
       {
         'id': 2,
+        'name': 'tig',
+        'tasks': [{
+          name: 'Install tig',
+          homebrew: 'name={{ item }}',
+          with_items: [
+            'tig'
+          ]
+        }]
+      },
+      {
+        'id': 3,
+        'name': 'rbenv',
+        'tasks': [{
+          name: 'Install rbenv',
+          homebrew: 'name={{ item }}',
+          with_items: [
+            'rbenv'
+          ]
+        }]
+      },
+      {
+        'id': 4,
+        'name': 'elixir',
+        'tasks': [{
+          name: 'Install elixir',
+          homebrew: 'name={{ item }}',
+          with_items: [
+            'elixir'
+          ]
+        }]
+      },
+      {
+        'id': 5,
+        'name': 'neovim',
+        'tasks': [{
+          name: 'Install neovim',
+          homebrew: 'name={{ item }}',
+          with_items: [
+            'neovim/neovim/neovim'
+          ]
+        }]
+      },
+      {
+        'id': 6,
+        'name': 'awscli',
+        'tasks': [{
+          name: 'Install awscli',
+          homebrew: 'name={{ item }}',
+          with_items: [
+            'awscli'
+          ]
+        }]
+      },
+      {
+        'id': 7,
+        'name': 'tmux',
+        'tasks': [{
+          name: 'Install tmux',
+          homebrew: 'name={{ item }}',
+          with_items: [
+            'tmux'
+          ]
+        }]
+      },
+      {
+        'id': 8,
+        'name': 'graphviz',
+        'tasks': [{
+          name: 'Install graphviz',
+          homebrew: 'name={{ item }}',
+          with_items: [
+            'graphviz'
+          ]
+        }]
+      },
+      {
+        'id': 9,
+        'name': 'haskell-stack',
+        'tasks': [{
+          name: 'Install haskell-stack',
+          homebrew: 'name={{ item }}',
+          with_items: [
+            'haskell-stack'
+          ]
+        }]
+      },
+      {
+        'id': 10,
+        'name': 'peco',
+        'tasks': [{
+          name: 'Install peco',
+          homebrew: 'name={{ item }}',
+          with_items: [
+            'peco'
+          ]
+        }]
+      },
+      {
+        'id': 11,
+        'name': 'dry',
+        'tasks': [{
+          name: 'Install dry',
+          homebrew: 'name={{ item }}',
+          with_items: [
+            'dry'
+          ]
+        }]
+      },
+      {
+        'id': 12,
         'name': 'cask',
         'tasks': [{
           'name': 'Install Homebrew cask packages',
