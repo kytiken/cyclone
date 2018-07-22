@@ -22,7 +22,7 @@ class InstallButton extends React.Component {
 
   dump () {
     const tasks = []
-    this.props.playbooks.forEach((playbook) => {
+    this.props.selectedPlaybooks.forEach((playbook) => {
       playbook.tasks.forEach((task) => {
         tasks.push(task)
       })
@@ -55,8 +55,8 @@ class InstallButton extends React.Component {
   render () {
     return (
       <div>
-        <Button color='inherit' onClick={this.dump.bind(this)}>
-          Install!!
+        <Button color='primary' onClick={this.dump.bind(this)}>
+          Install
         </Button>
       </div>
     )
