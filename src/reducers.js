@@ -15,7 +15,6 @@ const reducer = handleActions(
       return { ...state, playbooks }
     },
     [playbookActions.setSelectedPlaybooks]: (state, { payload: playbooks }) => {
-      console.log(playbooks)
       return { ...state, selectedPlaybooks: playbooks }
     },
     [passwordActions.setPassword]: (state, { payload: password }) => {
