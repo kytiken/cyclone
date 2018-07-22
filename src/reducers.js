@@ -1,15 +1,20 @@
 import { handleActions } from 'redux-actions'
-import actions from './actions/playbooks'
+import playbookActions from './actions/playbooks'
+import passwordActions from './actions/password'
 
 const defaultState = {
-  playbooks: []
+  playbooks: [],
+  password: ''
 }
 
 const reducer = handleActions(
   {
-    [actions.addPlaybook]: (state, { payload: playbook }) => {
+    [playbookActions.addPlaybook]: (state, { payload: playbook }) => {
       const playbooks = state.playbooks.concat(playbook)
       return { ...state, playbooks }
+    },
+    [passwordActions.setPassword]: (state, { payload: password }) => {
+      return { ...state, password }
     }
   },
   defaultState

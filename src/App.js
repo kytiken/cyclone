@@ -3,6 +3,7 @@ import AppBar from '@material-ui/core/AppBar'
 import Toolbar from '@material-ui/core/Toolbar'
 import Typography from '@material-ui/core/Typography'
 import PlaybookListContainer from './containers/PlaybookListContainer'
+import PasswordFieldContainer from './containers/PasswordFieldContainer'
 import Console from './components/Console'
 
 const App = () => (
@@ -14,6 +15,7 @@ const App = () => (
         </Typography>
       </Toolbar>
     </AppBar>
+    <PasswordFieldContainer />
     <PlaybookListContainer />
     <Console />
   </div>
