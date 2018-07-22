@@ -48,24 +48,32 @@ class PlaybookList extends React.Component {
       this.setState({
         checked: newChecked
       })
+      this.executeSetSelectedPlaybooks(newChecked)
     }
+  }
+
+  executeSetSelectedPlaybooks (checked) {
+    const selectedPlaybooks = this.props.playbooks.filter((playbook) => {
+      return checked.includes(playbook.id)
+    })
+    this.props.setSelectedPlaybooks(selectedPlaybooks)
   }
 
   render () {
     return (
       <div>
-        <PlaybookDumpButton playbooks={this.props.playbooks} password={this.props.password} ptyProcess={this.ptyProcess} />
+        <PlaybookDumpButton playbooks={this.props.selectedPlaybooks} password={this.props.password} ptyProcess={this.ptyProcess} />
         <List>
           {this.props.playbooks.map(playbook => (
             <ListItem
-              key={playbook.name}
+              key={playbook.id}
               playbook={undefined}
               dense
               button
-              onClick={this.handleToggle(playbook.name).bind(this)}
+              onClick={this.handleToggle(playbook.id).bind(this)}
             >
               <Checkbox
-                checked={this.state.checked.indexOf(playbook.name) !== -1}
+                checked={this.state.checked.indexOf(playbook.id) !== -1}
                 tabIndex={-1}
                 disableRipple
               />
