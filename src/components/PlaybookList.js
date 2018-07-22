@@ -6,7 +6,6 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Checkbox from '@material-ui/core/Checkbox'
 import IconButton from '@material-ui/core/IconButton'
 import CommentIcon from '@material-ui/icons/Comment'
-import os from 'os'
 import InstallButton from './InstallButton'
 
 class PlaybookList extends React.Component {
@@ -15,17 +14,6 @@ class PlaybookList extends React.Component {
     this.state = {
       checked: []
     }
-    this.ptyProcess = this.createPtyProcess()
-    this.ptyProcess.on('data', (data) => {
-      console.log(data)
-    })
-  }
-
-  createPtyProcess () {
-    const shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash'
-    const pty = require('node-pty')
-    return pty.spawn(shell, [], {
-    })
   }
 
   componentDidMount () {
@@ -62,7 +50,7 @@ class PlaybookList extends React.Component {
   render () {
     return (
       <div>
-        <InstallButton playbooks={this.props.selectedPlaybooks} password={this.props.password} ptyProcess={this.ptyProcess} />
+        <InstallButton playbooks={this.props.selectedPlaybooks} password={this.props.password} />
         <List>
           {this.props.playbooks.map(playbook => (
             <ListItem

@@ -1,9 +1,25 @@
 import React from 'react'
 import yaml from 'js-yaml'
 import Button from '@material-ui/core/Button'
+import os from 'os'
 var fs = require('fs')
 
 class InstallButton extends React.Component {
+  constructor () {
+    super()
+    this.ptyProcess = this.createPtyProcess()
+    this.ptyProcess.on('data', (data) => {
+      console.log(data)
+    })
+  }
+
+  createPtyProcess () {
+    const shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash'
+    const pty = require('node-pty')
+    return pty.spawn(shell, [], {
+    })
+  }
+
   dump () {
     const tasks = []
     this.props.playbooks.forEach((playbook) => {
@@ -30,9 +46,9 @@ class InstallButton extends React.Component {
     } catch (e) {
       console.log('Failed to save the file !')
     }
-    this.props.ptyProcess.write(`ansible-playbook -K ${filePath}\r`)
+    this.ptyProcess.write(`ansible-playbook -K ${filePath}\r`)
     window.setTimeout(() => {
-      this.props.ptyProcess.write(`${this.props.password}\r`)
+      this.ptyProcess.write(`${this.password}\r`)
     }, 3000)
   }
 
