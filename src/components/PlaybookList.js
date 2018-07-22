@@ -7,7 +7,7 @@ import Checkbox from '@material-ui/core/Checkbox'
 import IconButton from '@material-ui/core/IconButton'
 import CommentIcon from '@material-ui/icons/Comment'
 import os from 'os'
-import PlaybookDumpButton from './PlaybookDumpButton'
+import InstallButton from './InstallButton'
 
 class PlaybookList extends React.Component {
   constructor () {
@@ -62,7 +62,7 @@ class PlaybookList extends React.Component {
   render () {
     return (
       <div>
-        <PlaybookDumpButton playbooks={this.props.selectedPlaybooks} password={this.props.password} ptyProcess={this.ptyProcess} />
+        <InstallButton playbooks={this.props.selectedPlaybooks} password={this.props.password} ptyProcess={this.ptyProcess} />
         <List>
           {this.props.playbooks.map(playbook => (
             <ListItem

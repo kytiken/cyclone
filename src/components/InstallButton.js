@@ -3,7 +3,7 @@ import yaml from 'js-yaml'
 import Button from '@material-ui/core/Button'
 var fs = require('fs')
 
-class PlaybookDumpButton extends React.Component {
+class InstallButton extends React.Component {
   dump () {
     const tasks = []
     this.props.playbooks.forEach((playbook) => {
@@ -40,11 +40,11 @@ class PlaybookDumpButton extends React.Component {
     return (
       <div>
         <Button color='primary' onClick={this.dump.bind(this)}>
-          ansible execute!!
+          Install!!
         </Button>
       </div>
     )
   }
 }
 
-export default PlaybookDumpButton
+export default InstallButton
