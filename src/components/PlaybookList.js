@@ -6,7 +6,6 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Checkbox from '@material-ui/core/Checkbox'
 import IconButton from '@material-ui/core/IconButton'
 import CommentIcon from '@material-ui/icons/Comment'
-import InstallButton from './InstallButton'
 
 class PlaybookList extends React.Component {
   constructor () {
@@ -50,7 +49,6 @@ class PlaybookList extends React.Component {
   render () {
     return (
       <div>
-        <InstallButton playbooks={this.props.selectedPlaybooks} password={this.props.password} />
         <List>
           {this.props.playbooks.map(playbook => (
             <ListItem

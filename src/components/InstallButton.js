@@ -55,7 +55,7 @@ class InstallButton extends React.Component {
   render () {
     return (
       <div>
-        <Button color='primary' onClick={this.dump.bind(this)}>
+        <Button color='inherit' onClick={this.dump.bind(this)}>
           Install!!
         </Button>
       </div>
