@@ -3,7 +3,8 @@ import InstallButton from '../components/InstallButton'
 
 const mapStateToProps = (state) => {
   return {
-    selectedPlaybooks: state.selectedPlaybooks
+    selectedPlaybooks: state.selectedPlaybooks,
+    isPasswordEmpty: state.password.length === 0
   }
 }
 

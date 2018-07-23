@@ -52,10 +52,14 @@ class InstallButton extends React.Component {
     }, 3000)
   }
 
+  isInstallButtonDisabled () {
+    return this.props.isPasswordEmpty
+  }
+
   render () {
     return (
       <div>
-        <Button color='primary' onClick={this.dump.bind(this)}>
+        <Button color='primary' disabled={this.isInstallButtonDisabled()} onClick={this.dump.bind(this)}>
           Install
         </Button>
       </div>
