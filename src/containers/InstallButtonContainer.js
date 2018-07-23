@@ -1,11 +1,17 @@
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import InstallButton from '../components/InstallButton'
+import logsActions from '../actions/logs'
 
 const mapStateToProps = (state) => {
   return {
     selectedPlaybooks: state.selectedPlaybooks,
-    isPasswordEmpty: state.password.length === 0
+    password: state.password
   }
 }
 
-export default connect(mapStateToProps)(InstallButton)
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators(logsActions, dispatch)
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(InstallButton)

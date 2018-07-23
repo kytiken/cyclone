@@ -8,8 +8,14 @@ class InstallButton extends React.Component {
   constructor () {
     super()
     this.ptyProcess = this.createPtyProcess()
+  }
+
+  componentDidMount () {
     this.ptyProcess.on('data', (data) => {
-      console.log(data)
+      if (data.includes('SUDO password:')) {
+        this.ptyProcess.write(`${this.props.password}\r`)
+      }
+      this.props.addLog(data)
     })
   }
 
@@ -48,18 +54,16 @@ class InstallButton extends React.Component {
 
   executeAnsiblePlaybook (filePath) {
     this.ptyProcess.write(`ansible-playbook -K ${filePath}\r`)
-    window.setTimeout(() => {
-      this.ptyProcess.write(`${this.password}\r`)
-    }, 3000)
   }
 
   onInstallButtonClicked () {
     const filePath = this.createAnsiblePlaybookFile()
+    console.log(filePath)
     this.executeAnsiblePlaybook(filePath)
   }
 
   isInstallButtonDisabled () {
-    return this.props.isPasswordEmpty
+    return this.props.password.length === 0
   }
 
   render () {

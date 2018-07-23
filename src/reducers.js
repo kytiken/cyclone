@@ -1,11 +1,13 @@
 import { handleActions } from 'redux-actions'
 import playbookActions from './actions/playbooks'
 import passwordActions from './actions/password'
+import logsActions from './actions/logs'
 
 const defaultState = {
   playbooks: [],
   selectedPlaybooks: [],
-  password: ''
+  password: '',
+  logs: []
 }
 
 const reducer = handleActions(
@@ -19,6 +21,11 @@ const reducer = handleActions(
     },
     [passwordActions.setPassword]: (state, { payload: password }) => {
       return { ...state, password }
+    },
+    [logsActions.addLog]: (state, { payload: log }) => {
+      console.log(log)
+      const logs = state.logs.concat(log)
+      return { ...state, logs }
     }
   },
   defaultState
