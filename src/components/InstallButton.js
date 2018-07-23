@@ -16,8 +16,7 @@ class InstallButton extends React.Component {
   createPtyProcess () {
     const shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash'
     const pty = require('node-pty')
-    return pty.spawn(shell, [], {
-    })
+    return pty.spawn(shell, [], {})
   }
 
   createAnsiblePlaybookFile () {
@@ -38,9 +37,7 @@ class InstallButton extends React.Component {
       },
       'sortKeys': true // sort object keys
     })
-    console.log(yamlString)
     const filePath = `${process.resourcesPath}/playbook.yml`
-    console.log(filePath)
     try {
       fs.writeFileSync(filePath, yamlString, 'utf-8')
     } catch (e) {
