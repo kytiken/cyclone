@@ -28,7 +28,7 @@ export default class InstallDialog extends React.Component {
   }
 
   isInstallButtonDisabled () {
-    return this.props.selectedPlaybooks.length === 0
+    return this.props.selectedPlaybooksEmpty
   }
 
   render () {

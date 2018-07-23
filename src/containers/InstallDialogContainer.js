@@ -3,7 +3,7 @@ import InstallDialog from '../components/InstallDialog'
 
 const mapStateToProps = (state) => {
   return {
-    selectedPlaybooks: state.selectedPlaybooks
+    selectedPlaybooksEmpty: state.selectedPlaybooks.length === 0
   }
 }
 
