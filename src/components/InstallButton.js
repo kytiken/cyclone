@@ -20,7 +20,7 @@ class InstallButton extends React.Component {
     })
   }
 
-  dump () {
+  createAnsiblePlaybookFile () {
     const tasks = []
     this.props.selectedPlaybooks.forEach((playbook) => {
       playbook.tasks.forEach((task) => {
@@ -46,10 +46,19 @@ class InstallButton extends React.Component {
     } catch (e) {
       console.log('Failed to save the file !')
     }
+    return filePath
+  }
+
+  executeAnsiblePlaybook (filePath) {
     this.ptyProcess.write(`ansible-playbook -K ${filePath}\r`)
     window.setTimeout(() => {
       this.ptyProcess.write(`${this.password}\r`)
     }, 3000)
+  }
+
+  onInstallButtonClicked () {
+    const filePath = this.createAnsiblePlaybookFile()
+    this.executeAnsiblePlaybook(filePath)
   }
 
   isInstallButtonDisabled () {
@@ -59,7 +68,7 @@ class InstallButton extends React.Component {
   render () {
     return (
       <div>
-        <Button color='primary' disabled={this.isInstallButtonDisabled()} onClick={this.dump.bind(this)}>
+        <Button color='primary' disabled={this.isInstallButtonDisabled()} onClick={this.onInstallButtonClicked.bind(this)}>
           Install
         </Button>
       </div>
