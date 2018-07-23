@@ -27,10 +27,14 @@ export default class InstallDialog extends React.Component {
   handleClickInstallButton () {
   }
 
+  isInstallButtonDisabled () {
+    return this.props.selectedPlaybooks.length === 0
+  }
+
   render () {
     return (
       <div>
-        <Button color='inherit' onClick={this.handleClickOpen.bind(this)}>Install</Button>
+        <Button color='inherit' disabled={this.isInstallButtonDisabled()} onClick={this.handleClickOpen.bind(this)}>Install</Button>
         <Dialog
           open={this.state.open}
           onClose={this.handleClose}
