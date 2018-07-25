@@ -29,9 +29,7 @@ const initializePlaybooks = (dispatch) => {
         'tasks': [{
           name: 'Install tig',
           homebrew: 'name={{ item }}',
-          with_items: [
-            'tig'
-          ]
+          with_items: ['tig']
         }]
       },
       {
@@ -40,9 +38,7 @@ const initializePlaybooks = (dispatch) => {
         'tasks': [{
           name: 'Install rbenv',
           homebrew: 'name={{ item }}',
-          with_items: [
-            'rbenv'
-          ]
+          with_items: ['rbenv']
         }]
       },
       {
@@ -51,9 +47,7 @@ const initializePlaybooks = (dispatch) => {
         'tasks': [{
           name: 'Install elixir',
           homebrew: 'name={{ item }}',
-          with_items: [
-            'elixir'
-          ]
+          with_items: ['elixir']
         }]
       },
       {
@@ -62,9 +56,7 @@ const initializePlaybooks = (dispatch) => {
         'tasks': [{
           name: 'Install neovim',
           homebrew: 'name={{ item }}',
-          with_items: [
-            'neovim/neovim/neovim'
-          ]
+          with_items: ['neovim/neovim/neovim']
         }]
       },
       {
@@ -73,9 +65,7 @@ const initializePlaybooks = (dispatch) => {
         'tasks': [{
           name: 'Install awscli',
           homebrew: 'name={{ item }}',
-          with_items: [
-            'awscli'
-          ]
+          with_items: ['awscli']
         }]
       },
       {
@@ -84,9 +74,7 @@ const initializePlaybooks = (dispatch) => {
         'tasks': [{
           name: 'Install tmux',
           homebrew: 'name={{ item }}',
-          with_items: [
-            'tmux'
-          ]
+          with_items: ['tmux']
         }]
       },
       {
@@ -95,9 +83,7 @@ const initializePlaybooks = (dispatch) => {
         'tasks': [{
           name: 'Install graphviz',
           homebrew: 'name={{ item }}',
-          with_items: [
-            'graphviz'
-          ]
+          with_items: ['graphviz']
         }]
       },
       {
@@ -106,9 +92,7 @@ const initializePlaybooks = (dispatch) => {
         'tasks': [{
           name: 'Install haskell-stack',
           homebrew: 'name={{ item }}',
-          with_items: [
-            'haskell-stack'
-          ]
+          with_items: ['haskell-stack']
         }]
       },
       {
@@ -117,9 +101,7 @@ const initializePlaybooks = (dispatch) => {
         'tasks': [{
           name: 'Install peco',
           homebrew: 'name={{ item }}',
-          with_items: [
-            'peco'
-          ]
+          with_items: ['peco']
         }]
       },
       {
@@ -128,50 +110,260 @@ const initializePlaybooks = (dispatch) => {
         'tasks': [{
           name: 'Install dry',
           homebrew: 'name={{ item }}',
-          with_items: [
-            'dry'
-          ]
+          with_items: ['dry']
         }]
       },
       {
         'id': 12,
-        'name': 'cask',
+        'name': 'java',
         'tasks': [{
           'name': 'Install Homebrew cask packages',
           'homebrew_cask': 'name={{ item }}',
+          'with_items': ['java']
+        }]
+      },
+      {
+        'id': 13,
+        'name': 'android-studio',
+        'tasks': [{
+          'name': 'Install android-studio',
+          'homebrew_cask': 'name={{ item }}',
+          'with_items': ['android-studio']
+        }]
+      },
+      {
+        'id': 14,
+        'name': 'kindle',
+        'tasks': [{
+          'name': 'Install kindle',
+          'homebrew_cask': 'name={{ item }}',
+          'with_items': ['kindle']
+        }]
+      },
+      {
+        'id': 15,
+        'name': 'vlc',
+        'tasks': [{
+          'name': 'Install vlc',
+          'homebrew_cask': 'name={{ item }}',
+          'with_items': ['vlc']
+        }]
+      },
+      {
+        'id': 16,
+        'name': 'skype',
+        'tasks': [{
+          'name': 'Install skype',
+          'homebrew_cask': 'name={{ item }}',
+          'with_items': ['skype']
+        }]
+      },
+      {
+        'id': 17,
+        'name': 'docker',
+        'tasks': [{
+          'name': 'Install docker',
+          'homebrew_cask': 'name={{ item }}',
           'with_items': [
-            'java',
-            'android-studio',
-            'kindle',
-            'vlc',
-            'skype',
-            'docker',
-            'camtwist',
-            'obs',
-            'astah-community',
-            'google-japanese-ime',
-            'iterm2',
-            'google-chrome',
-            'vagrant',
-            'silverlight',
-            'flash-player',
-            'google-cloud-sdk',
-            'sequel-pro',
-            'visual-studio-code',
-            'amazon-drive',
-            'kitematic',
-            'hyper',
+            'docker'
+          ]
+        }]
+      },
+      {
+        'id': 18,
+        'name': 'camtwist',
+        'tasks': [{
+          'name': 'Install camtwist',
+          'homebrew_cask': 'name={{ item }}',
+          'with_items': [
+            'camtwist'
+          ]
+        }]
+      },
+      {
+        'id': 19,
+        'name': 'obs',
+        'tasks': [{
+          'name': 'Install obs',
+          'homebrew_cask': 'name={{ item }}',
+          'with_items': [
+            'obs'
+          ]
+        }]
+      },
+      {
+        'id': 20,
+        'name': 'astah-community',
+        'tasks': [{
+          'name': 'Install astah-community',
+          'homebrew_cask': 'name={{ item }}',
+          'with_items': [
+            'astah-community'
+          ]
+        }]
+      },
+      {
+        'id': 21,
+        'name': 'google-japanese-ime',
+        'tasks': [{
+          'name': 'Install google-japanese-ime',
+          'homebrew_cask': 'name={{ item }}',
+          'with_items': [
+            'google-japanese-ime'
+          ]
+        }]
+      },
+      {
+        'id': 22,
+        'name': 'iterm2',
+        'tasks': [{
+          'name': 'Install iterm2',
+          'homebrew_cask': 'name={{ item }}',
+          'with_items': [
+            'iterm2'
+          ]
+        }]
+      },
+      {
+        'id': 23,
+        'name': 'google-chrome',
+        'tasks': [{
+          'name': 'Install google-chrome',
+          'homebrew_cask': 'name={{ item }}',
+          'with_items': [
+            'google-chrome'
+          ]
+        }]
+      },
+      {
+        'id': 24,
+        'name': 'vagrant',
+        'tasks': [{
+          'name': 'Install vagrant',
+          'homebrew_cask': 'name={{ item }}',
+          'with_items': [
+            'vagrant'
+          ]
+        }]
+      },
+      {
+        'id': 25,
+        'name': 'silverlight',
+        'tasks': [{
+          'name': 'Install silverlight',
+          'homebrew_cask': 'name={{ item }}',
+          'with_items': [
+            'silverlight'
+          ]
+        }]
+      },
+
+      {
+        'id': 26,
+        'name': 'flash-player',
+        'tasks': [{
+          'name': 'Install flash-player',
+          'homebrew_cask': 'name={{ item }}',
+          'with_items': [
+            'flash-player'
+          ]
+        }]
+      },
+
+      {
+        'id': 27,
+        'name': 'google-cloud-sdk',
+        'tasks': [{
+          'name': 'Install google-cloud-sdk',
+          'homebrew_cask': 'name={{ item }}',
+          'with_items': [
+            'google-cloud-sdk'
+          ]
+        }]
+      },
+      {
+        'id': 28,
+        'name': 'sequel-pro',
+        'tasks': [{
+          'name': 'Install sequel-pro',
+          'homebrew_cask': 'name={{ item }}',
+          'with_items': [
+            'sequel-pro'
+          ]
+        }]
+      },
+      {
+        'id': 29,
+        'name': 'visual-studio-code',
+        'tasks': [{
+          'name': 'Install visual-studio-code',
+          'homebrew_cask': 'name={{ item }}',
+          'with_items': [
+            'visual-studio-code'
+          ]
+        }]
+      },
+
+      {
+        'id': 30,
+        'name': 'amazon-drive',
+        'tasks': [{
+          'name': 'Install amazon-drive',
+          'homebrew_cask': 'name={{ item }}',
+          'with_items': [
+            'amazon-drive'
+          ]
+        }]
+      },
+      {
+        'id': 31,
+        'name': 'kitematic',
+        'tasks': [{
+          'name': 'Install kitematic',
+          'homebrew_cask': 'name={{ item }}',
+          'with_items': [
+            'kitematic'
+          ]
+        }]
+      },
+      {
+        'id': 32,
+        'name': 'hyper',
+        'tasks': [{
+          'name': 'Install hyper',
+          'homebrew_cask': 'name={{ item }}',
+          'with_items': [
+            'hyper'
+          ]
+        }]
+      },
+      {
+        'id': 33,
+        'name': 'spectacle',
+        'tasks': [{
+          'name': 'Install spectacle',
+          'homebrew_cask': 'name={{ item }}',
+          'with_items': [
             'spectacle'
           ]
         }]
       }
     ]
 
-    // db.put({
-    //   '_id': 'playbooks',
-    //   'records': playbookRecords
-    // })
-    db.get('playbooks').then((doc) => {
+    db.get('playbooks').then(function (doc) {
+      doc.records = playbookRecords
+      return db.put(doc)
+    }).catch(function (err) {
+      if (err.status === 404) {
+        db.put({
+          '_id': 'playbooks',
+          'records': playbookRecords
+        })
+      }
+      console.log(err)
+    }).then(function () {
+      return db.get('playbooks')
+    }).then(function (doc) {
       doc.records.forEach((playbook) => {
         dispatch(actions.addPlaybook(playbook))
       })
