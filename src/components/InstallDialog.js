@@ -24,9 +24,6 @@ export default class InstallDialog extends React.Component {
     this.setState({ open: false })
   }
 
-  handleClickInstallButton () {
-  }
-
   isInstallButtonDisabled () {
     return this.props.selectedPlaybooksEmpty
   }
