@@ -1,36 +1,9 @@
 import React from 'react'
 import yaml from 'js-yaml'
 import Button from '@material-ui/core/Button'
-import os from 'os'
 var fs = require('fs')
 
 class InstallButton extends React.Component {
-  constructor () {
-    super()
-    this.ptyProcess = this.createPtyProcess()
-  }
-
-  componentDidMount () {
-    this.ptyProcess.on('data', (data) => {
-      if (data.includes('SUDO password:')) {
-        this.ptyProcess.write(`${this.props.password}\r`)
-      }
-      if (data.includes('Password:')) {
-        this.ptyProcess.write(`${this.props.password}\r`)
-      }
-      if (data.includes('sudo: 3 incorrect password attempts')) {
-      }
-
-      this.props.addLog(data)
-    })
-  }
-
-  createPtyProcess () {
-    const shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash'
-    const pty = require('node-pty')
-    return pty.spawn(shell, [], {})
-  }
-
   createAnsiblePlaybookFile () {
     const tasks = []
     this.props.selectedPlaybooks.forEach((playbook) => {
@@ -58,14 +31,10 @@ class InstallButton extends React.Component {
     return filePath
   }
 
-  executeAnsiblePlaybook (filePath) {
-    this.ptyProcess.write(`sudo sU - $USER -c "ansible-playbook -K ${filePath}"\r`)
-  }
-
   onInstallButtonClicked () {
     const filePath = this.createAnsiblePlaybookFile()
     console.log(filePath)
-    this.executeAnsiblePlaybook(filePath)
+    this.props.executeAnsiblePlaybook(filePath)
   }
 
   isInstallButtonDisabled () {
