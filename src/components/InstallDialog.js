@@ -9,19 +9,12 @@ import PasswordFieldContainer from '../containers/PasswordFieldContainer'
 import InstallButtonContainer from '../containers/InstallButtonContainer'
 
 export default class InstallDialog extends React.Component {
-  constructor () {
-    super()
-    this.state = {
-      open: false
-    }
-  }
-
   handleClickOpen () {
-    this.setState({ open: true })
+    this.props.openInstallDialog()
   }
 
   handleClose () {
-    this.setState({ open: false })
+    this.props.closeInstallDialog()
   }
 
   isInstallButtonDisabled () {
@@ -33,7 +26,7 @@ export default class InstallDialog extends React.Component {
       <div>
         <Button color='inherit' disabled={this.isInstallButtonDisabled()} onClick={this.handleClickOpen.bind(this)}>Install</Button>
         <Dialog
-          open={this.state.open}
+          open={this.props.isOpen}
           onClose={this.handleClose}
           aria-labelledby='form-dialog-title'
         >

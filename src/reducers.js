@@ -2,12 +2,14 @@ import { handleActions } from 'redux-actions'
 import playbookActions from './actions/playbooks'
 import passwordActions from './actions/password'
 import logsActions from './actions/logs'
+import installDialogActions from './actions/installDialog'
 
 const defaultState = {
   playbooks: [],
   selectedPlaybooks: [],
   password: '',
-  logs: []
+  logs: [],
+  installDialogIsOpen: false
 }
 
 const reducer = handleActions(
@@ -26,6 +28,12 @@ const reducer = handleActions(
       console.log(log)
       const logs = state.logs.concat(log)
       return { ...state, logs }
+    },
+    [installDialogActions.openInstallDialog]: (state) => {
+      return { ...state, installDialogIsOpen: true }
+    },
+    [installDialogActions.closeInstallDialog]: (state) => {
+      return { ...state, installDialogIsOpen: false }
     }
   },
   defaultState

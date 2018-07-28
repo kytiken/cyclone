@@ -1,10 +1,19 @@
 import { connect } from 'react-redux'
+import { bindActionCreators } from 'redux'
 import InstallDialog from '../components/InstallDialog'
+import actions from '../actions/installDialog'
 
 const mapStateToProps = (state) => {
   return {
-    selectedPlaybooksEmpty: state.selectedPlaybooks.length === 0
+    selectedPlaybooksEmpty: state.selectedPlaybooks.length === 0,
+    isOpen: state.installDialogIsOpen
   }
 }
 
-export default connect(mapStateToProps)(InstallDialog)
+const mapDispatchToProps = (dispatch) => {
+  return {
+    ...bindActionCreators(actions, dispatch)
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(InstallDialog)
