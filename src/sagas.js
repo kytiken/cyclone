@@ -1,4 +1,5 @@
 import { put, select, takeEvery } from 'redux-saga/effects'
+import installDialogActions from './actions/installDialog'
 import os from 'os'
 
 const createPtyProcess = () => {
@@ -27,7 +28,7 @@ const ptyExecute = (command) => {
 function * executeAnsiblePlaybook (action) {
   const command = `sudo sU - $USER -c "ansible-playbook -K ${action.payload.filePath}"\r`
   ptyExecute(command)
-  yield
+  yield put(installDialogActions.closeInstallDialog())
 }
 function * passwordInput (action) {
   const state = yield select()
