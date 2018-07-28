@@ -15,13 +15,13 @@ const store = createStore(
   applyMiddleware(sagaMiddleware)
 )
 
+sagaMiddleware.run(mySaga)
+
 ReactDOM.render(
   <Provider store={store}>
     <AppContainer />
   </Provider>,
   document.getElementById('root')
 )
-
-sagaMiddleware.run(mySaga)
 
 registerServiceWorker()

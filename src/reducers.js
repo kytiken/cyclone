@@ -12,9 +12,6 @@ const defaultState = {
 
 const reducer = handleActions(
   {
-    // SETUP_PTY_PROCESS: (state, action) => {
-    //   console.log(action)
-    // },
     [playbookActions.addPlaybook]: (state, { payload: playbook }) => {
       const playbooks = state.playbooks.concat(playbook)
       return { ...state, playbooks }

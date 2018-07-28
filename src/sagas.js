@@ -1,6 +1,5 @@
-import { call, put, takeEvery } from 'redux-saga/effects'
+import { put, select, takeEvery } from 'redux-saga/effects'
 import os from 'os'
-import logsAction from './actions/logs'
 
 const createPtyProcess = () => {
   const shell = os.platform() === 'win32' ? 'powershell.exe' : 'bash'
@@ -10,27 +9,15 @@ const createPtyProcess = () => {
 
 const ptyProcess = createPtyProcess()
 
-const setup = () => {
-  console.log('setupPtyProcess')
+const setup = (addLog) => {
   ptyProcess.on('data', (data) => {
-    // console.log(data)
-    if (data.includes('SUDO password:')) {
-      ptyProcess.write(`${this.props.password}\r`)
-    }
-
-    if (data.includes('Password:')) {
-      ptyProcess.write(`${this.props.password}\r`)
-    }
-
-    if (data.includes('sudo: 3 incorrect password attempts')) {
-    }
-
-    put(logsAction.addLog(data))
+    addLog(data)
   })
 }
 
 function * setupPtyProcess (action) {
-  yield call(setup())
+  setup(action.payload.addLog)
+  yield
 }
 
 const ptyExecute = (command) => {
@@ -38,13 +25,28 @@ const ptyExecute = (command) => {
 }
 
 function * executeAnsiblePlaybook (action) {
-  console.log(action)
   const command = `sudo sU - $USER -c "ansible-playbook -K ${action.payload.filePath}"\r`
-  yield call(ptyExecute(command))
+  ptyExecute(command)
+  yield
+}
+function * passwordInput (action) {
+  const state = yield select()
+  const password = state.password
+  ptyProcess.write(`${password}\r`)
+  yield
 }
 
-const bindPtyProcessLog = () => {
+function * bindPtyProcessLog (action) {
+  if (action.payload.includes('SUDO password:')) {
+    yield put({type: 'PASSWORD_INPUT_REQUEST'})
+  }
 
+  if (action.payload.includes('Password:')) {
+    yield put({type: 'PASSWORD_INPUT_REQUEST'})
+  }
+
+  if (action.payload.includes('sudo: 3 incorrect password attempts')) {
+  }
 }
 
 /*
@@ -55,5 +57,6 @@ function * mySaga () {
   yield takeEvery('SETUP_PTY_PROCESS', setupPtyProcess)
   yield takeEvery('EXECUTE_ANSIBLE_PLAYBOOK', executeAnsiblePlaybook)
   yield takeEvery('ADD_LOG', bindPtyProcessLog)
+  yield takeEvery('PASSWORD_INPUT_REQUEST', passwordInput)
 }
 export default mySaga

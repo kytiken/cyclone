@@ -5,7 +5,7 @@ import Console from '../components/Console'
 
 class App extends React.Component {
   componentDidMount () {
-    this.props.setupPtyProcess()
+    this.props.setupPtyProcess(this.props.addLog)
   }
 
   render () {
