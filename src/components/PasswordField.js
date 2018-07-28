@@ -1,5 +1,5 @@
 import React from 'react'
-import TextField from '@material-ui/core/TextField';
+import TextField from '@material-ui/core/TextField'
 
 class PasswordField extends React.Component {
   handleChange (event) {

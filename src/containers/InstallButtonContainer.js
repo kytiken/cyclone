@@ -2,6 +2,7 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import InstallButton from '../components/InstallButton'
 import logsActions from '../actions/logs'
+import sagaActions from '../actions/saga'
 
 const mapStateToProps = (state) => {
   return {
@@ -11,7 +12,11 @@ const mapStateToProps = (state) => {
 }
 
 const mapDispatchToProps = (dispatch) => {
-  return bindActionCreators(logsActions, dispatch)
+  const actions = {
+    ...sagaActions,
+    ...logsActions
+  }
+  return bindActionCreators(actions, dispatch)
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(InstallButton)
