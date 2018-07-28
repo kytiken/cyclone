@@ -1,5 +1,6 @@
 import { put, select, takeEvery } from 'redux-saga/effects'
 import installDialogActions from './actions/installDialog'
+import installProgressDialogActions from './actions/installProgressDialog'
 import os from 'os'
 
 const createPtyProcess = () => {
@@ -28,6 +29,7 @@ const ptyExecute = (command) => {
 function * executeAnsiblePlaybook (action) {
   const command = `sudo sU - $USER -c "ansible-playbook -K ${action.payload.filePath}"\r`
   ptyExecute(command)
+  yield put(installProgressDialogActions.openInstallProgressDialog())
   yield put(installDialogActions.closeInstallDialog())
 }
 function * passwordInput (action) {
@@ -44,6 +46,14 @@ function * bindPtyProcessLog (action) {
 
   if (action.payload.includes('Password:')) {
     yield put({type: 'PASSWORD_INPUT_REQUEST'})
+  }
+
+  if (action.payload.includes('TASK [')) {
+    yield put({type: 'ANSIBLE_TASK_COMPLETED'})
+  }
+
+  if (action.payload.includes('PLAY RECAP')) {
+    yield put({type: 'INSTALL_COMPLETED'})
   }
 
   if (action.payload.includes('sudo: 3 incorrect password attempts')) {

@@ -14,6 +14,7 @@ export default class InstallDialog extends React.Component {
   }
 
   handleClose () {
+    console.log(this.props)
     this.props.closeInstallDialog()
   }
 
