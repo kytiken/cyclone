@@ -10,8 +10,18 @@ function createWindow () {
   mainWindow = new BrowserWindow({width: 800, height: 600})
 
   // and load the index.html of the app.
-  mainWindow.loadURL('http://localhost:3000')
 
+  const NODE_ENV = process.env.NODE_ENV
+  if (NODE_ENV === 'prod') {
+    let url = require('url').format({
+      protocol: 'file',
+      slashes: true,
+      pathname: require('path').join(__dirname, 'build/index.html')
+    })
+    mainWindow.loadURL(url)
+  } else {
+    mainWindow.loadURL('http://localhost:3000')
+  }
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
 
