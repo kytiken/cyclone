@@ -32,7 +32,11 @@ const reducer = handleActions(
     },
     [playbookActions.addSelectedPlaybooks]: (state, { payload: playbook }) => {
       const selectedPlaybooks = state.selectedPlaybooks.concat(playbook)
-      return { ...state, selectedPlaybooks }
+      let ansibleTaskLength = 0
+      selectedPlaybooks.forEach((playbook) => {
+        ansibleTaskLength += playbook.tasks.length
+      })
+      return { ...state, selectedPlaybooks, ansibleTaskLength }
     },
     [passwordActions.setPassword]: (state, { payload: password }) => {
       return { ...state, password }
