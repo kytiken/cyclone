@@ -2,7 +2,13 @@
   "name": "cyclone",
   "version": "0.1.0",
   "private": true,
-  "main": "main.js",
+  "main": "./main.js",
+  "build": {
+    "appId": "com.electron.cyclone",
+    "mac": {
+      "category": "your.app.category.type"
+    }
+  },
   "dependencies": {
     "@material-ui/core": "^1.4.0",
     "@material-ui/icons": "^1.1.0",
@@ -58,10 +64,14 @@
     "start": "node scripts/start.js",
     "build": "node scripts/build.js",
     "test": "node scripts/test.js --env=jsdom",
-    "electron": "electron ."
+    "electron": "electron .",
+    "pack": "electron-builder --dir",
+    "dist": "electron-builder"
   },
   "devDependencies": {
     "electron": "^2.0.5",
+    "electron-builder": "^20.26.0",
+    "electron-packager": "^12.1.0",
     "electron-redux-devtools": "^0.3.4",
     "redux-devtools": "^3.4.1"
   },

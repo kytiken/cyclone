@@ -13,12 +13,7 @@ function createWindow () {
 
   const NODE_ENV = process.env.NODE_ENV
   if (NODE_ENV === 'prod') {
-    let url = require('url').format({
-      protocol: 'file',
-      slashes: true,
-      pathname: require('path').join(__dirname, 'build/index.html')
-    })
-    mainWindow.loadURL(url)
+    mainWindow.loadURL('http://localhost:3000')
   } else {
     mainWindow.loadURL('http://localhost:3000')
   }
@@ -55,6 +50,16 @@ app.on('activate', function () {
     createWindow()
   }
 })
+const path = require('path')
+app.setPath("userData", path.join(process.cwd(), "save"))
 
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
+
+const devMode = (process.argv || []).indexOf('--dev') !== -1
+
+if (devMode) {
+  // load the app dependencies
+  const PATH_APP_NODE_MODULES = path.join(__dirname, '..', '..', 'app', 'node_modules')
+  require('module').globalPaths.push(PATH_APP_NODE_MODULES)
+}
