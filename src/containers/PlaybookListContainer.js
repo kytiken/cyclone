@@ -12,7 +12,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 1,
         'name': 'essential brew package',
-        'installed': true,
+        'installed': false,
         'tasks': [{
           name: 'Install homebrew packages',
           homebrew: 'name={{ item }}',
