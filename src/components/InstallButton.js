@@ -1,4 +1,5 @@
 import React from 'react'
+import { remote } from 'electron'
 import yaml from 'js-yaml'
 import Button from '@material-ui/core/Button'
 var fs = require('fs')
@@ -22,7 +23,8 @@ class InstallButton extends React.Component {
       },
       'sortKeys': true // sort object keys
     })
-    const filePath = `${process.resourcesPath}/playbook.yml`
+    const path = require('path')
+    const filePath = `${path.join(remote.app.getPath('userData')).replace(' ', '\\ ')}/playbook.yml`
     try {
       fs.writeFileSync(filePath, yamlString, 'utf-8')
     } catch (e) {
