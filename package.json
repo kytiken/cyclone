@@ -7,7 +7,8 @@
     "appId": "com.electron.cyclone",
     "mac": {
       "category": "your.app.category.type"
-    }
+    },
+    "files": ["build/**/*", "dist/**/*", "main.js"]
   },
   "dependencies": {
     "@material-ui/core": "^1.4.0",

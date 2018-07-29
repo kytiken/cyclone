@@ -12,10 +12,10 @@ function createWindow () {
   // and load the index.html of the app.
 
   const NODE_ENV = process.env.NODE_ENV
-  if (NODE_ENV === 'prod') {
+  if (NODE_ENV === 'dev') {
     mainWindow.loadURL('http://localhost:3000')
   } else {
-    mainWindow.loadURL('http://localhost:3000')
+    mainWindow.loadURL("https://s3-ap-northeast-1.amazonaws.com/cyclone.kytiken.com/index.html")
   }
   // Open the DevTools.
   // mainWindow.webContents.openDevTools()
@@ -53,11 +53,3 @@ app.on('activate', function () {
 const path = require('path')
 // In this file you can include the rest of your app's specific main process
 // code. You can also put them in separate files and require them here.
-
-const devMode = (process.argv || []).indexOf('--dev') !== -1
-
-if (devMode) {
-  // load the app dependencies
-  const PATH_APP_NODE_MODULES = path.join(__dirname, '..', '..', 'app', 'node_modules')
-  require('module').globalPaths.push(PATH_APP_NODE_MODULES)
-}
