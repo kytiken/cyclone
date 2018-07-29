@@ -14,7 +14,7 @@ const defaultState = {
   logs: [],
   installDialogIsOpen: false,
   installProgressDialogIsOpen: false,
-  installCompletePercent: 30
+  installCompletePercent: 0
 }
 
 const reducer = handleActions(
