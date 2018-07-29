@@ -2,11 +2,13 @@ import { connect } from 'react-redux'
 import { bindActionCreators } from 'redux'
 import actions from '../actions/playbooks'
 import PlaybookList from '../components/PlaybookList'
+import { remote } from 'electron'
 
 const initializePlaybooks = (dispatch) => {
   return () => {
     const PouchDB = require('pouchdb')
-    const db = new PouchDB('db')
+    const path = require('path')
+    const db = new PouchDB(path.join(remote.app.getPath('userData'), 'db'))
 
     var playbookRecords = [
       {
