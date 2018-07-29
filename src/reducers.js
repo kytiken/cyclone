@@ -30,6 +30,10 @@ const reducer = handleActions(
       })
       return { ...state, selectedPlaybooks: playbooks, ansibleTaskLength }
     },
+    [playbookActions.addSelectedPlaybooks]: (state, { payload: playbook }) => {
+      const selectedPlaybooks = state.selectedPlaybooks.concat(playbook)
+      return { ...state, selectedPlaybooks }
+    },
     [passwordActions.setPassword]: (state, { payload: password }) => {
       return { ...state, password }
     },

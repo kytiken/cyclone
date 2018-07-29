@@ -5,21 +5,13 @@ import ListItemText from '@material-ui/core/ListItemText'
 import Checkbox from '@material-ui/core/Checkbox'
 
 class PlaybookList extends React.Component {
-  constructor () {
-    super()
-    this.state = {
-      checked: []
-    }
-  }
-
   componentDidMount () {
-    // this.ptyProcess.write('ls / \r')
     this.props.initializePlaybooks()
   }
 
   handleToggle (value) {
     return () => {
-      const { checked } = this.state
+      const checked = this.props.selectedPlaybooks
       const currentIndex = checked.indexOf(value)
       const newChecked = [...checked]
 
@@ -29,16 +21,13 @@ class PlaybookList extends React.Component {
         newChecked.splice(currentIndex, 1)
       }
 
-      this.setState({
-        checked: newChecked
-      })
       this.executeSetSelectedPlaybooks(newChecked)
     }
   }
 
   executeSetSelectedPlaybooks (checked) {
     const selectedPlaybooks = this.props.playbooks.filter((playbook) => {
-      return checked.includes(playbook.id)
+      return checked.includes(playbook)
     })
     this.props.setSelectedPlaybooks(selectedPlaybooks)
   }
@@ -53,10 +42,10 @@ class PlaybookList extends React.Component {
               playbook={undefined}
               dense
               button
-              onClick={this.handleToggle(playbook.id).bind(this)}
+              onClick={this.handleToggle(playbook).bind(this)}
             >
               <Checkbox
-                checked={this.state.checked.indexOf(playbook.id) !== -1}
+                checked={this.props.selectedPlaybooks.indexOf(playbook) !== -1}
                 tabIndex={-1}
                 disableRipple
               />

@@ -59,6 +59,28 @@ function * bindPtyProcessLog (action) {
   if (action.payload.includes('sudo: 3 incorrect password attempts')) {
   }
 }
+function * installCompleted () {
+  const PouchDB = require('pouchdb')
+  const db = new PouchDB('db')
+  const state = yield select()
+  const selectedPlaybookIds = state.selectedPlaybooks.map((playbook) => (playbook.id))
+
+  db.get('playbooks').then(function (doc) {
+    const playbookRecords = doc.records.map((playbook) => {
+      playbook.installed = selectedPlaybookIds.includes(playbook.id)
+      return playbook
+    })
+    db.put({
+      _id: 'playbooks',
+      _rev: doc._rev,
+      records: playbookRecords
+    }).then(function (response) {
+      console.log(response)
+    }).catch(function (err) {
+      console.log(err)
+    })
+  })
+}
 
 /*
   USER_FETCH_REQUESTED Action が送出されるたびに fetchUser を起動します。
@@ -69,5 +91,6 @@ function * mySaga () {
   yield takeEvery('EXECUTE_ANSIBLE_PLAYBOOK', executeAnsiblePlaybook)
   yield takeEvery('ADD_LOG', bindPtyProcessLog)
   yield takeEvery('PASSWORD_INPUT_REQUEST', passwordInput)
+  yield takeEvery('INSTALL_COMPLETED', installCompleted)
 }
 export default mySaga

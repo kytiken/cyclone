@@ -5,13 +5,14 @@ import PlaybookList from '../components/PlaybookList'
 
 const initializePlaybooks = (dispatch) => {
   return () => {
-    var PouchDB = require('pouchdb')
-    var db = new PouchDB('db')
+    const PouchDB = require('pouchdb')
+    const db = new PouchDB('db')
 
     var playbookRecords = [
       {
         'id': 1,
         'name': 'essential brew package',
+        'installed': true,
         'tasks': [{
           name: 'Install homebrew packages',
           homebrew: 'name={{ item }}',
@@ -26,6 +27,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 2,
         'name': 'tig',
+        'installed': false,
         'tasks': [{
           name: 'Install tig',
           homebrew: 'name={{ item }}',
@@ -35,6 +37,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 3,
         'name': 'rbenv',
+        'installed': false,
         'tasks': [{
           name: 'Install rbenv',
           homebrew: 'name={{ item }}',
@@ -44,6 +47,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 4,
         'name': 'elixir',
+        'installed': false,
         'tasks': [{
           name: 'Install elixir',
           homebrew: 'name={{ item }}',
@@ -53,6 +57,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 5,
         'name': 'neovim',
+        'installed': false,
         'tasks': [{
           name: 'Install neovim',
           homebrew: 'name={{ item }}',
@@ -62,6 +67,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 6,
         'name': 'awscli',
+        'installed': false,
         'tasks': [{
           name: 'Install awscli',
           homebrew: 'name={{ item }}',
@@ -71,6 +77,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 7,
         'name': 'tmux',
+        'installed': false,
         'tasks': [{
           name: 'Install tmux',
           homebrew: 'name={{ item }}',
@@ -80,6 +87,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 8,
         'name': 'graphviz',
+        'installed': false,
         'tasks': [{
           name: 'Install graphviz',
           homebrew: 'name={{ item }}',
@@ -89,6 +97,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 9,
         'name': 'haskell-stack',
+        'installed': false,
         'tasks': [{
           name: 'Install haskell-stack',
           homebrew: 'name={{ item }}',
@@ -98,6 +107,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 10,
         'name': 'peco',
+        'installed': false,
         'tasks': [{
           name: 'Install peco',
           homebrew: 'name={{ item }}',
@@ -107,6 +117,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 11,
         'name': 'dry',
+        'installed': false,
         'tasks': [{
           name: 'Install dry',
           homebrew: 'name={{ item }}',
@@ -116,6 +127,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 12,
         'name': 'java',
+        'installed': false,
         'tasks': [{
           'name': 'Install Homebrew cask packages',
           'homebrew_cask': 'name={{ item }}',
@@ -125,6 +137,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 13,
         'name': 'android-studio',
+        'installed': false,
         'tasks': [{
           'name': 'Install android-studio',
           'homebrew_cask': 'name={{ item }}',
@@ -134,6 +147,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 14,
         'name': 'kindle',
+        'installed': false,
         'tasks': [{
           'name': 'Install kindle',
           'homebrew_cask': 'name={{ item }}',
@@ -143,6 +157,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 15,
         'name': 'vlc',
+        'installed': false,
         'tasks': [{
           'name': 'Install vlc',
           'homebrew_cask': 'name={{ item }}',
@@ -152,6 +167,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 16,
         'name': 'skype',
+        'installed': false,
         'tasks': [{
           'name': 'Install skype',
           'homebrew_cask': 'name={{ item }}',
@@ -161,6 +177,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 17,
         'name': 'docker',
+        'installed': false,
         'tasks': [{
           'name': 'Install docker',
           'homebrew_cask': 'name={{ item }}',
@@ -172,6 +189,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 18,
         'name': 'camtwist',
+        'installed': false,
         'tasks': [{
           'name': 'Install camtwist',
           'homebrew_cask': 'name={{ item }}',
@@ -183,6 +201,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 19,
         'name': 'obs',
+        'installed': false,
         'tasks': [{
           'name': 'Install obs',
           'homebrew_cask': 'name={{ item }}',
@@ -194,6 +213,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 20,
         'name': 'astah-community',
+        'installed': false,
         'tasks': [{
           'name': 'Install astah-community',
           'homebrew_cask': 'name={{ item }}',
@@ -205,6 +225,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 21,
         'name': 'google-japanese-ime',
+        'installed': false,
         'tasks': [{
           'name': 'Install google-japanese-ime',
           'homebrew_cask': 'name={{ item }}',
@@ -216,6 +237,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 22,
         'name': 'iterm2',
+        'installed': false,
         'tasks': [{
           'name': 'Install iterm2',
           'homebrew_cask': 'name={{ item }}',
@@ -227,6 +249,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 23,
         'name': 'google-chrome',
+        'installed': false,
         'tasks': [{
           'name': 'Install google-chrome',
           'homebrew_cask': 'name={{ item }}',
@@ -238,6 +261,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 24,
         'name': 'vagrant',
+        'installed': false,
         'tasks': [{
           'name': 'Install vagrant',
           'homebrew_cask': 'name={{ item }}',
@@ -249,6 +273,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 25,
         'name': 'silverlight',
+        'installed': false,
         'tasks': [{
           'name': 'Install silverlight',
           'homebrew_cask': 'name={{ item }}',
@@ -261,6 +286,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 26,
         'name': 'flash-player',
+        'installed': false,
         'tasks': [{
           'name': 'Install flash-player',
           'homebrew_cask': 'name={{ item }}',
@@ -273,6 +299,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 27,
         'name': 'google-cloud-sdk',
+        'installed': false,
         'tasks': [{
           'name': 'Install google-cloud-sdk',
           'homebrew_cask': 'name={{ item }}',
@@ -284,6 +311,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 28,
         'name': 'sequel-pro',
+        'installed': false,
         'tasks': [{
           'name': 'Install sequel-pro',
           'homebrew_cask': 'name={{ item }}',
@@ -295,6 +323,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 29,
         'name': 'visual-studio-code',
+        'installed': false,
         'tasks': [{
           'name': 'Install visual-studio-code',
           'homebrew_cask': 'name={{ item }}',
@@ -307,6 +336,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 30,
         'name': 'amazon-drive',
+        'installed': false,
         'tasks': [{
           'name': 'Install amazon-drive',
           'homebrew_cask': 'name={{ item }}',
@@ -318,6 +348,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 31,
         'name': 'kitematic',
+        'installed': false,
         'tasks': [{
           'name': 'Install kitematic',
           'homebrew_cask': 'name={{ item }}',
@@ -329,6 +360,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 32,
         'name': 'hyper',
+        'installed': false,
         'tasks': [{
           'name': 'Install hyper',
           'homebrew_cask': 'name={{ item }}',
@@ -340,6 +372,7 @@ const initializePlaybooks = (dispatch) => {
       {
         'id': 33,
         'name': 'spectacle',
+        'installed': false,
         'tasks': [{
           'name': 'Install spectacle',
           'homebrew_cask': 'name={{ item }}',
@@ -350,10 +383,7 @@ const initializePlaybooks = (dispatch) => {
       }
     ]
 
-    db.get('playbooks').then(function (doc) {
-      doc.records = playbookRecords
-      return db.put(doc)
-    }).catch(function (err) {
+    db.get('playbooks').catch(function (err) {
       if (err.status === 404) {
         db.put({
           '_id': 'playbooks',
@@ -366,6 +396,9 @@ const initializePlaybooks = (dispatch) => {
     }).then(function (doc) {
       doc.records.forEach((playbook) => {
         dispatch(actions.addPlaybook(playbook))
+        if (playbook.installed) {
+          dispatch(actions.addSelectedPlaybooks(playbook))
+        }
       })
     })
   }
@@ -374,7 +407,7 @@ const initializePlaybooks = (dispatch) => {
 const mapStateToProps = (state) => {
   return {
     playbooks: state.playbooks,
-    password: state.password
+    selectedPlaybooks: state.selectedPlaybooks
   }
 }
 
