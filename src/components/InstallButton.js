@@ -24,7 +24,7 @@ class InstallButton extends React.Component {
       'sortKeys': true // sort object keys
     })
     const path = require('path')
-    const filePath = `${path.join(remote.app.getPath('userData')).replace(' ', '\\ ')}/playbook.yml`
+    const filePath = `${path.join(remote.app.getPath('userData'))}/playbook.yml`
     try {
       fs.writeFileSync(filePath, yamlString, 'utf-8')
     } catch (e) {
@@ -36,7 +36,7 @@ class InstallButton extends React.Component {
   onInstallButtonClicked () {
     const filePath = this.createAnsiblePlaybookFile()
     console.log(filePath)
-    this.props.executeAnsiblePlaybook(filePath)
+    this.props.executeAnsiblePlaybook(filePath.replace(' ', '\\ '))
   }
 
   isInstallButtonDisabled () {
